@@ -3,25 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World!</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Занимает всю высоту видимой области */
-            background-color: #3498db; /* Синий цвет */
-            font-family: Arial, sans-serif; /* Обычный шрифт */
-        }
-        h1 {
-            color: #ffffff; /* Белый цвет текста */
-            font-size: 3em; /* Увеличенный размер шрифта для заголовка */
-            text-align: center;
-        }
-    </style>
+    <title>ДИВО - Разработка интеллектуальных систем</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Alumni+Sans:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=KS+Bistra:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <img src="logo.jpg" alt="ДИВО Logo" class="logo-image">
+                <!-- Fallback diamond logo if image fails -->
+                <div class="logo-fallback" style="display: none;">♦</div>
+            </div>
+            <h1 class="hero-title">ДИВО</h1>
+            <p class="hero-subtitle">Разработка интеллектуальных систем</p>
+            <p class="hero-tagline">Создаем решения, которые объединяют <span class="accent">возможности AI + надежность автоматизации</span></p>
+            <div class="hero-cta">
+                <button class="btn btn-primary" onclick="scrollToSection('cta')">Получить консультацию</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach" id="approach">
+        <div class="container">
+            <h2 class="section-title">Наш подход</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <h3>Полистек разработки</h3>
+                    <p>Команда работает с любым стеком. Java для высоконагруженных систем, Python для AI-интеграций, JavaScript для интерфейсов, Scala для уникальных задач.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Прагматичный подход к AI</h3>
+                    <p>Берем лучшие AI-технологии, чтобы встроить их в надежную, масштабируемую архитектуру, которая решает ваши бизнес-задачи.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Гибкая безопасность данных</h3>
+                    <p>Соответствуем корпоративным стандартам ИБ. Адаптируемся под ваши требования: от API-интеграций через деперсонализацию до полностью изолированных on-premise решений.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Экспертиза в интеграциях</h3>
+                    <p>Строим архитектуры, которые гладко встраиваются в существующую инфраструктуру. Опыт интеграций с 1С, AmoCRM, Telegram, LinkedIn, SAP, внешним API и сервисам без API.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+        <div class="container">
+            <h2 class="section-title">Решения</h2>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <h3>умные системы</h3>
+                    <p class="solution-description">Решения для анализа данных, автоматизированных рекомендательных систем, интеграции и системы управления процессами в компании.</p>
+                    <p class="solution-example">Например: системы аналитики для закупок и продаж, платформы обработки внутренних данных.</p>
+                </div>
+                <div class="solution-card">
+                    <h3>корпоративные ассистенты</h3>
+                    <p class="solution-description">Цифровые помощники для сотрудников и отделов, которые ускоряют рутинные процессы и помогают принимать решения на основе данных.</p>
+                    <p class="solution-example">Например: ассистент коммерческого директора, AI арт директор, помощник отдела продаж.</p>
+                </div>
+                <div class="solution-card">
+                    <h3>безопасные решения</h3>
+                    <p class="solution-description">Инструменты, работающие в изолированных корпоративных контурах, с поддержкой стандартов безопасности и деперсонализацией данных на выход во вне.</p>
+                    <p class="solution-example">Например: on-premise аудит звонков, деперсонализация для выполнения закона 152-ФЗ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="section-title">Команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="IMG_0636.jpg" alt="Дарья Камышина" class="member-image" loading="eager">
+                        <div class="member-placeholder" style="display: none;">Д</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Дарья Камышина</h3>
+                        <span class="member-role">CEO</span>
+                        <p class="member-description">Продуктовая стратегия и развитие бизнеса<br>Яндекс, стартапы: от идеи до $200К выручки за 4 месяца</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="photo_2025-10-06-12.01.26.jpg" alt="Виктор Писаревский" class="member-image cropped" loading="eager">
+                        <div class="member-placeholder" style="display: none;">В</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Виктор Писаревский</h3>
+                        <span class="member-role">CTO</span>
+                        <p class="member-description">Enterprise-архитектор, СБЕР<br>Системы на $18,4+ млрд оборота</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Clients Section -->
+    <section class="enterprise-clients" id="enterprise-clients">
+        <div class="container">
+            <h2 class="section-title">Клиенты <span class="enterprise-text">Enterprise</span></h2>
+            <div class="clients-grid-2x2">
+                <!-- First Row -->
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">РАЙФФАЙЗЕНБАНК</h3>
+                    </div>
+                    <h4 class="project-name">Ассистент арт-директора</h4>
+                    <p class="project-description">Инструмент автоматически проверяет дизайн-макеты на соответствие стандартам качества и дизайн-системе, освобождая живых арт-директоров для творческих и стратегических задач</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">X5 ГРУПП</h3>
+                    </div>
+                    <h4 class="project-name">Гибридная платформа для AI интеграций</h4>
+                    <p class="project-description">Единый пульт управления для креативного и аналитического AI позволяет централизованно и безопасно работать с любыми моделями, будь то языковые LLM или графические генераторы, с учетом сложностей параллельного импорта и корпоративной безопасности.</p>
+                </div>
+
+                <!-- Second Row -->
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">СБЕР</h3>
+                    </div>
+                    <h4 class="project-name">Витрина данных</h4>
+                    <p class="project-description">Поток для данных, который безопасно и быстро доставляет информацию из критически важных систем в любые аналитические инструменты, позволяя бизнесу получать инсайты, не рискуя стабильностью основной инфраструктуры.</p>
+                </div>
+
+                <div class="client-card featured">
+                    <div class="client-header">
+                        <h3 class="client-name">АВИТО</h3>
+                        <span class="client-result">в 3 раза быстрее</span>
+                    </div>
+                    <h4 class="project-name">AI исследование для редизайна</h4>
+                    <p class="project-description">Выступили внешней фокус группой и провели с помощью AI UX-исследования и собрав требования от всех команд и рынка в рабочий прототип в 3 раза быстрее стандартного процесса, позволив создавать продукты, которые нравятся пользователям и не вызывают внутренних конфликтов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regular Clients Section (former Additional Projects) -->
+    <section class="clients" id="clients">
+        <div class="container">
+            <h2 class="section-title">Клиенты</h2>
+            <div class="clients-grid-2x2">
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">ПРОЕКТНЫЕ УСЛУГИ</h3>
+                        <span class="client-result">80% экономия времени</span>
+                    </div>
+                    <h4 class="project-name">AI подготовка документов</h4>
+                    <p class="project-description">Умный конвейер документов за минуты собирает персонализированные договоры и отчеты из шаблонов и данных CRM, сокращая время на бумажную работу на 80% и позволяя быстро запускать новые проекты.</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">ТЕЛЕКОМ, БРОКЕРЫ</h3>
+                    </div>
+                    <h4 class="project-name">On-prem аудит звонков</h4>
+                    <p class="project-description">Аудитор отдела продаж, который проводит анализ всех звонков, обеспечивая полный контроль над данными внутри вашего корпоративного контура и соответствие стандартам безопасности.</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">РИТЕЙЛ</h3>
+                    </div>
+                    <h4 class="project-name">Telegram-бот поиска в базе знаний</h4>
+                    <p class="project-description">Бот интегрирован с базой данных компании и позволяет сотрудникам получать быстрые и точные ответы на любые вопросы, связанные с товарным ассортиментом, процессами обслуживания и внутренней документацией.</p>
+                </div>
+
+                <div class="client-card">
+                    <div class="client-header">
+                        <h3 class="client-name">Б2Б УСЛУГИ</h3>
+                    </div>
+                    <h4 class="project-name">Агент лидогенерации в LinkedIn</h4>
+                    <p class="project-description">Цифровой двойник вашего сейлз-менеджера, который неотличимо от человека находит и квалифицирует B2B-клиентов в LinkedIn, освобождая вашу команду для общения только с заинтересованными лидами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">начало работы</h2>
+                <h3 class="cta-subtitle">что предлагаем</h3>
+                <p class="cta-description">Техническую консультацию по вашим процессам. Обсудим, где AI даст измеримый эффект, а где достаточно классической автоматизации.</p>
+                <div class="cta-details">
+                    <p class="cta-duration">За 40 минут вы получите:</p>
+                    <p class="cta-result"><strong>Техническое заключение с рекомендациями и примерной оценкой проекта.</strong></p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://t.me/darikamouse" target="_blank" class="btn btn-primary btn-large">Связаться с нами</a>
+                    <a href="https://calendar.app.google/zXJQAHoAFtcwB7147" target="_blank" class="btn btn-secondary btn-large">Запланировать встречу</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 ДИВО. Разработка интеллектуальных систем</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
