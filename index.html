@@ -4,29 +4,1413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ДИВО - Разработка интеллектуальных систем</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Alumni+Sans:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=KS+Bistra:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          /* Primitive Color Tokens */
+          --color-white: rgba(255, 255, 255, 1);
+          --color-black: rgba(0, 0, 0, 1);
+          --color-cream-50: rgba(252, 252, 249, 1);
+          --color-cream-100: rgba(255, 255, 253, 1);
+          --color-gray-200: rgba(245, 245, 245, 1);
+          --color-gray-300: rgba(167, 169, 169, 1);
+          --color-gray-400: rgba(119, 124, 124, 1);
+          --color-slate-500: rgba(98, 108, 113, 1);
+          --color-brown-600: rgba(94, 82, 64, 1);
+          --color-charcoal-700: rgba(31, 33, 33, 1);
+          --color-charcoal-800: rgba(38, 40, 40, 1);
+          --color-slate-900: rgba(19, 52, 59, 1);
+          --color-teal-300: rgba(50, 184, 198, 1);
+          --color-teal-400: rgba(45, 166, 178, 1);
+          --color-teal-500: rgba(33, 128, 141, 1);
+          --color-teal-600: rgba(29, 116, 128, 1);
+          --color-teal-700: rgba(26, 104, 115, 1);
+          --color-teal-800: rgba(41, 150, 161, 1);
+          --color-red-400: rgba(255, 84, 89, 1);
+          --color-red-500: rgba(192, 21, 47, 1);
+          --color-orange-400: rgba(230, 129, 97, 1);
+          --color-orange-500: rgba(168, 75, 47, 1);
+
+          /* RGB versions for opacity control */
+          --color-brown-600-rgb: 94, 82, 64;
+          --color-teal-500-rgb: 33, 128, 141;
+          --color-slate-900-rgb: 19, 52, 59;
+          --color-slate-500-rgb: 98, 108, 113;
+          --color-red-500-rgb: 192, 21, 47;
+          --color-red-400-rgb: 255, 84, 89;
+          --color-orange-500-rgb: 168, 75, 47;
+          --color-orange-400-rgb: 230, 129, 97;
+
+          /* Background color tokens (Light Mode) */
+          --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+          --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+          --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+          --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+          --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+          --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+          --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+          --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+          /* Semantic Color Tokens (Light Mode) */
+          --color-background: var(--color-cream-50);
+          --color-surface: var(--color-cream-100);
+          --color-text: var(--color-slate-900);
+          --color-text-secondary: var(--color-slate-500);
+          --color-primary: var(--color-teal-500);
+          --color-primary-hover: var(--color-teal-600);
+          --color-primary-active: var(--color-teal-700);
+          --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-btn-primary-text: var(--color-cream-50);
+          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-error: var(--color-red-500);
+          --color-success: var(--color-teal-500);
+          --color-warning: var(--color-orange-500);
+          --color-info: var(--color-slate-500);
+          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+          --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+          /* Common style patterns */
+          --focus-ring: 0 0 0 3px var(--color-focus-ring);
+          --focus-outline: 2px solid var(--color-primary);
+          --status-bg-opacity: 0.15;
+          --status-border-opacity: 0.25;
+          --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+          --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+          /* RGB versions for opacity control */
+          --color-success-rgb: 33, 128, 141;
+          --color-error-rgb: 192, 21, 47;
+          --color-warning-rgb: 168, 75, 47;
+          --color-info-rgb: 98, 108, 113;
+
+          /* Typography */
+          --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+            Monaco, Consolas, monospace;
+          --font-size-xs: 11px;
+          --font-size-sm: 12px;
+          --font-size-base: 14px;
+          --font-size-md: 14px;
+          --font-size-lg: 16px;
+          --font-size-xl: 18px;
+          --font-size-2xl: 20px;
+          --font-size-3xl: 24px;
+          --font-size-4xl: 30px;
+          --font-weight-normal: 400;
+          --font-weight-medium: 500;
+          --font-weight-semibold: 550;
+          --font-weight-bold: 600;
+          --line-height-tight: 1.2;
+          --line-height-normal: 1.5;
+          --letter-spacing-tight: -0.01em;
+
+          /* Spacing */
+          --space-0: 0;
+          --space-1: 1px;
+          --space-2: 2px;
+          --space-4: 4px;
+          --space-6: 6px;
+          --space-8: 8px;
+          --space-10: 10px;
+          --space-12: 12px;
+          --space-16: 16px;
+          --space-20: 20px;
+          --space-24: 24px;
+          --space-32: 32px;
+
+          /* Border Radius */
+          --radius-sm: 6px;
+          --radius-base: 8px;
+          --radius-md: 10px;
+          --radius-lg: 12px;
+          --radius-full: 9999px;
+
+          /* Shadows */
+          --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+          --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+            0 2px 4px -1px rgba(0, 0, 0, 0.02);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+            0 4px 6px -2px rgba(0, 0, 0, 0.02);
+          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+          /* Animation */
+          --duration-fast: 150ms;
+          --duration-normal: 250ms;
+          --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+          /* Layout */
+          --container-sm: 640px;
+          --container-md: 768px;
+          --container-lg: 1024px;
+          --container-xl: 1280px;
+        }
+
+        /* Dark mode colors */
+        @media (prefers-color-scheme: dark) {
+          :root {
+            /* RGB versions for opacity control (Dark Mode) */
+            --color-gray-400-rgb: 119, 124, 124;
+            --color-teal-300-rgb: 50, 184, 198;
+            --color-gray-300-rgb: 167, 169, 169;
+            --color-gray-200-rgb: 245, 245, 245;
+
+            /* Background color tokens (Dark Mode) */
+            --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+            --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+            --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+            --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+            --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+            --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+            --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+            --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+            /* Semantic Color Tokens (Dark Mode) */
+            --color-background: var(--color-charcoal-700);
+            --color-surface: var(--color-charcoal-800);
+            --color-text: var(--color-gray-200);
+            --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+            --color-primary: var(--color-teal-300);
+            --color-primary-hover: var(--color-teal-400);
+            --color-primary-active: var(--color-teal-800);
+            --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+            --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+            --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+            --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+            --color-error: var(--color-red-400);
+            --color-success: var(--color-teal-300);
+            --color-warning: var(--color-orange-400);
+            --color-info: var(--color-gray-300);
+            --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+            --color-btn-primary-text: var(--color-slate-900);
+            --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+            --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+            --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+            --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+            --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+            /* Common style patterns - updated for dark mode */
+            --focus-ring: 0 0 0 3px var(--color-focus-ring);
+            --focus-outline: 2px solid var(--color-primary);
+            --status-bg-opacity: 0.15;
+            --status-border-opacity: 0.25;
+            --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+            /* RGB versions for dark mode */
+            --color-success-rgb: var(--color-teal-300-rgb);
+            --color-error-rgb: var(--color-red-400-rgb);
+            --color-warning-rgb: var(--color-orange-400-rgb);
+            --color-info-rgb: var(--color-gray-300-rgb);
+          }
+        }
+
+        /* Data attribute for manual theme switching */
+        [data-color-scheme="dark"] {
+          /* RGB versions for opacity control (dark mode) */
+          --color-gray-400-rgb: 119, 124, 124;
+          --color-teal-300-rgb: 50, 184, 198;
+          --color-gray-300-rgb: 167, 169, 169;
+          --color-gray-200-rgb: 245, 245, 245;
+
+          /* Colorful background palette - Dark Mode */
+          --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+          --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+          --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+          --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+          --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+          --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+          --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+          --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+          /* Semantic Color Tokens (Dark Mode) */
+          --color-background: var(--color-charcoal-700);
+          --color-surface: var(--color-charcoal-800);
+          --color-text: var(--color-gray-200);
+          --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+          --color-primary: var(--color-teal-300);
+          --color-primary-hover: var(--color-teal-400);
+          --color-primary-active: var(--color-teal-800);
+          --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+          --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+          --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+          --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+          --color-error: var(--color-red-400);
+          --color-success: var(--color-teal-300);
+          --color-warning: var(--color-orange-400);
+          --color-info: var(--color-gray-300);
+          --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+          --color-btn-primary-text: var(--color-slate-900);
+          --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
+          --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+          --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+          --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+          /* Common style patterns - updated for dark mode */
+          --focus-ring: 0 0 0 3px var(--color-focus-ring);
+          --focus-outline: 2px solid var(--color-primary);
+          --status-bg-opacity: 0.15;
+          --status-border-opacity: 0.25;
+          --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+          --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+          /* RGB versions for dark mode */
+          --color-success-rgb: var(--color-teal-300-rgb);
+          --color-error-rgb: var(--color-red-400-rgb);
+          --color-warning-rgb: var(--color-orange-400-rgb);
+          --color-info-rgb: var(--color-gray-300-rgb);
+        }
+
+        [data-color-scheme="light"] {
+          /* RGB versions for opacity control (light mode) */
+          --color-brown-600-rgb: 94, 82, 64;
+          --color-teal-500-rgb: 33, 128, 141;
+          --color-slate-900-rgb: 19, 52, 59;
+
+          /* Semantic Color Tokens (Light Mode) */
+          --color-background: var(--color-cream-50);
+          --color-surface: var(--color-cream-100);
+          --color-text: var(--color-slate-900);
+          --color-text-secondary: var(--color-slate-500);
+          --color-primary: var(--color-teal-500);
+          --color-primary-hover: var(--color-teal-600);
+          --color-primary-active: var(--color-teal-700);
+          --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-btn-primary-text: var(--color-cream-50);
+          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-error: var(--color-red-500);
+          --color-success: var(--color-teal-500);
+          --color-warning: var(--color-orange-500);
+          --color-info: var(--color-slate-500);
+          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+          /* RGB versions for light mode */
+          --color-success-rgb: var(--color-teal-500-rgb);
+          --color-error-rgb: var(--color-red-500-rgb);
+          --color-warning-rgb: var(--color-orange-500-rgb);
+          --color-info-rgb: var(--color-slate-500-rgb);
+        }
+
+        /* Base styles */
+        html {
+          font-size: var(--font-size-base);
+          font-family: var(--font-family-base);
+          line-height: var(--line-height-normal);
+          color: var(--color-text);
+          background-color: var(--color-background);
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        *,
+        *::before,
+        *::after {
+          box-sizing: inherit;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          margin: 0;
+          font-weight: var(--font-weight-semibold);
+          line-height: var(--line-height-tight);
+          color: var(--color-text);
+          letter-spacing: var(--letter-spacing-tight);
+        }
+
+        h1 {
+          font-size: var(--font-size-4xl);
+        }
+        h2 {
+          font-size: var(--font-size-3xl);
+        }
+        h3 {
+          font-size: var(--font-size-2xl);
+        }
+        h4 {
+          font-size: var(--font-size-xl);
+        }
+        h5 {
+          font-size: var(--font-size-lg);
+        }
+        h6 {
+          font-size: var(--font-size-md);
+        }
+
+        p {
+          margin: 0 0 var(--space-16) 0;
+        }
+
+        a {
+          color: var(--color-primary);
+          text-decoration: none;
+          transition: color var(--duration-fast) var(--ease-standard);
+        }
+
+        a:hover {
+          color: var(--color-primary-hover);
+        }
+
+        code,
+        pre {
+          font-family: var(--font-family-mono);
+          font-size: calc(var(--font-size-base) * 0.95);
+          background-color: var(--color-secondary);
+          border-radius: var(--radius-sm);
+        }
+
+        code {
+          padding: var(--space-1) var(--space-4);
+        }
+
+        pre {
+          padding: var(--space-16);
+          margin: var(--space-16) 0;
+          overflow: auto;
+          border: 1px solid var(--color-border);
+        }
+
+        pre code {
+          background: none;
+          padding: 0;
+        }
+
+        /* Buttons */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: var(--space-8) var(--space-16);
+          border-radius: var(--radius-base);
+          font-size: var(--font-size-base);
+          font-weight: 500;
+          line-height: 1.5;
+          cursor: pointer;
+          transition: all var(--duration-normal) var(--ease-standard);
+          border: none;
+          text-decoration: none;
+          position: relative;
+        }
+
+        .btn:focus-visible {
+          outline: none;
+          box-shadow: var(--focus-ring);
+        }
+
+        .btn--primary {
+          background: var(--color-primary);
+          color: var(--color-btn-primary-text);
+        }
+
+        .btn--primary:hover {
+          background: var(--color-primary-hover);
+        }
+
+        .btn--primary:active {
+          background: var(--color-primary-active);
+        }
+
+        .btn--secondary {
+          background: var(--color-secondary);
+          color: var(--color-text);
+        }
+
+        .btn--secondary:hover {
+          background: var(--color-secondary-hover);
+        }
+
+        .btn--secondary:active {
+          background: var(--color-secondary-active);
+        }
+
+        .btn--outline {
+          background: transparent;
+          border: 1px solid var(--color-border);
+          color: var(--color-text);
+        }
+
+        .btn--outline:hover {
+          background: var(--color-secondary);
+        }
+
+        .btn--sm {
+          padding: var(--space-4) var(--space-12);
+          font-size: var(--font-size-sm);
+          border-radius: var(--radius-sm);
+        }
+
+        .btn--lg {
+          padding: var(--space-10) var(--space-20);
+          font-size: var(--font-size-lg);
+          border-radius: var(--radius-md);
+        }
+
+        .btn--full-width {
+          width: 100%;
+        }
+
+        .btn:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        /* Form elements */
+        .form-control {
+          display: block;
+          width: 100%;
+          padding: var(--space-8) var(--space-12);
+          font-size: var(--font-size-md);
+          line-height: 1.5;
+          color: var(--color-text);
+          background-color: var(--color-surface);
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-base);
+          transition: border-color var(--duration-fast) var(--ease-standard),
+            box-shadow var(--duration-fast) var(--ease-standard);
+        }
+
+        textarea.form-control {
+          font-family: var(--font-family-base);
+          font-size: var(--font-size-base);
+        }
+
+        select.form-control {
+          padding: var(--space-8) var(--space-12);
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-image: var(--select-caret-light);
+          background-repeat: no-repeat;
+          background-position: right var(--space-12) center;
+          background-size: 16px;
+          padding-right: var(--space-32);
+        }
+
+        /* Add a dark mode specific caret */
+        @media (prefers-color-scheme: dark) {
+          select.form-control {
+            background-image: var(--select-caret-dark);
+          }
+        }
+
+        /* Also handle data-color-scheme */
+        [data-color-scheme="dark"] select.form-control {
+          background-image: var(--select-caret-dark);
+        }
+
+        [data-color-scheme="light"] select.form-control {
+          background-image: var(--select-caret-light);
+        }
+
+        .form-control:focus {
+          border-color: var(--color-primary);
+          outline: var(--focus-outline);
+        }
+
+        .form-label {
+          display: block;
+          margin-bottom: var(--space-8);
+          font-weight: var(--font-weight-medium);
+          font-size: var(--font-size-sm);
+        }
+
+        .form-group {
+          margin-bottom: var(--space-16);
+        }
+
+        /* Card component */
+        .card {
+          background-color: var(--color-surface);
+          border-radius: var(--radius-lg);
+          border: 1px solid var(--color-card-border);
+          box-shadow: var(--shadow-sm);
+          overflow: hidden;
+          transition: box-shadow var(--duration-normal) var(--ease-standard);
+        }
+
+        .card:hover {
+          box-shadow: var(--shadow-md);
+        }
+
+        .card__body {
+          padding: var(--space-16);
+        }
+
+        .card__header,
+        .card__footer {
+          padding: var(--space-16);
+          border-bottom: 1px solid var(--color-card-border-inner);
+        }
+
+        /* Status indicators - simplified with CSS variables */
+        .status {
+          display: inline-flex;
+          align-items: center;
+          padding: var(--space-6) var(--space-12);
+          border-radius: var(--radius-full);
+          font-weight: var(--font-weight-medium);
+          font-size: var(--font-size-sm);
+        }
+
+        .status--success {
+          background-color: rgba(
+            var(--color-success-rgb, 33, 128, 141),
+            var(--status-bg-opacity)
+          );
+          color: var(--color-success);
+          border: 1px solid
+            rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+        }
+
+        .status--error {
+          background-color: rgba(
+            var(--color-error-rgb, 192, 21, 47),
+            var(--status-bg-opacity)
+          );
+          color: var(--color-error);
+          border: 1px solid
+            rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+        }
+
+        .status--warning {
+          background-color: rgba(
+            var(--color-warning-rgb, 168, 75, 47),
+            var(--status-bg-opacity)
+          );
+          color: var(--color-warning);
+          border: 1px solid
+            rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+        }
+
+        .status--info {
+          background-color: rgba(
+            var(--color-info-rgb, 98, 108, 113),
+            var(--status-bg-opacity)
+          );
+          color: var(--color-info);
+          border: 1px solid
+            rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+        }
+
+        /* Container layout */
+        .container {
+          width: 100%;
+          margin-right: auto;
+          margin-left: auto;
+          padding-right: var(--space-16);
+          padding-left: var(--space-16);
+        }
+
+        @media (min-width: 640px) {
+          .container {
+            max-width: var(--container-sm);
+          }
+        }
+        @media (min-width: 768px) {
+          .container {
+            max-width: var(--container-md);
+          }
+        }
+        @media (min-width: 1024px) {
+          .container {
+            max-width: var(--container-lg);
+          }
+        }
+        @media (min-width: 1280px) {
+          .container {
+            max-width: var(--container-xl);
+          }
+        }
+
+        /* Utility classes */
+        .flex {
+          display: flex;
+        }
+        .flex-col {
+          flex-direction: column;
+        }
+        .items-center {
+          align-items: center;
+        }
+        .justify-center {
+          justify-content: center;
+        }
+        .justify-between {
+          justify-content: space-between;
+        }
+        .gap-4 {
+          gap: var(--space-4);
+        }
+        .gap-8 {
+          gap: var(--space-8);
+        }
+        .gap-16 {
+          gap: var(--space-16);
+        }
+
+        .m-0 {
+          margin: 0;
+        }
+        .mt-8 {
+          margin-top: var(--space-8);
+        }
+        .mb-8 {
+          margin-bottom: var(--space-8);
+        }
+        .mx-8 {
+          margin-left: var(--space-8);
+          margin-right: var(--space-8);
+        }
+        .my-8 {
+          margin-top: var(--space-8);
+          margin-bottom: var(--space-8);
+        }
+
+        .p-0 {
+          padding: 0;
+        }
+        .py-8 {
+          padding-top: var(--space-8);
+          padding-bottom: var(--space-8);
+        }
+        .px-8 {
+          padding-left: var(--space-8);
+          padding-right: var(--space-8);
+        }
+        .py-16 {
+          padding-top: var(--space-16);
+          padding-bottom: var(--space-16);
+        }
+        .px-16 {
+          padding-left: var(--space-16);
+          padding-right: var(--space-16);
+        }
+
+        .block {
+          display: block;
+        }
+        .hidden {
+          display: none;
+        }
+
+        /* Accessibility */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border-width: 0;
+        }
+
+        :focus-visible {
+          outline: var(--focus-outline);
+          outline-offset: 2px;
+        }
+
+        /* Dark mode specifics */
+        [data-color-scheme="dark"] .btn--outline {
+          border: 1px solid var(--color-border-secondary);
+        }
+
+        @font-face {
+          font-family: 'FKGroteskNeue';
+          src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+            format('woff2');
+        }
+
+        /* END PERPLEXITY DESIGN SYSTEM */
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgb(0, 0, 0);
+            background-color: rgb(241, 241, 241);
+            overflow-x: hidden;
+        }
+
+        /* CRITICAL FIX: Typography with KS Bistra for main headings */
+        h1, h2.section-title {
+            font-family: 'KS Bistra', 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h3, h4, h5, h6 {
+            font-family: 'Alumni Sans', 'Montserrat', sans-serif;
+            font-weight: 700; /* This corresponds to Bold for Alumni Sans */
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 900;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .accent {
+            color: rgb(203, 2, 19);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgb(203, 2, 19);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: rgb(197, 42, 14);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(203, 2, 19, 0.3);
+        }
+
+        .btn-primary {
+            background: rgb(203, 2, 19);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgb(203, 2, 19);
+            color: rgb(203, 2, 19);
+        }
+
+        .btn-secondary:hover {
+            background: rgb(203, 2, 19);
+            color: white;
+        }
+
+        .btn-large {
+            padding: 1.25rem 3rem;
+            font-size: 1.25rem;
+        }
+
+        /* CRITICAL FIX: Section titles with KS Bistra font */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: rgb(0, 0, 0);
+            position: relative;
+            font-family: 'KS Bistra', 'Montserrat', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: rgb(203, 2, 19);
+            margin: 1rem auto;
+        }
+
+        /* CRITICAL FIX: Enterprise text styling */
+        .enterprise-text {
+            font-family: 'Alumni Sans', sans-serif;
+            font-size: 0.6em;
+            color: rgb(203, 2, 19);
+            font-weight: 700;
+        }
+
+        /* CRITICAL FIX: Hero Section with proper logo */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: rgb(241, 241, 241);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* CRITICAL FIX: Logo image instead of star */
+        .logo {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-image {
+            max-width: 60px; /* EDITED: Was 120px */
+            height: auto;
+            /* filter: drop-shadow(0 2px 4px rgba(203, 2, 19, 0.3)); EDITED: Removed shadow */
+        }
+
+        .hero-title {
+            margin-bottom: 1rem;
+            color: rgb(0, 0, 0);
+            letter-spacing: -2px;
+            font-family: 'KS Bistra', 'Montserrat', sans-serif;
+            font-weight: 900;
+        }
+
+        .hero-subtitle {
+            /* EDITED: Styles changed to match team member name */
+            font-family: 'Alumni Sans', 'Montserrat', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: rgb(60, 60, 60);
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            line-height: 1.4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            margin-top: 3rem;
+        }
+
+        /* Approach Section */
+        .approach {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .approach-card {
+            background: rgb(248, 248, 248);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgb(203, 2, 19);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .approach-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .approach-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(203, 2, 19, 0.2);
+        }
+
+        .approach-card h3 {
+            margin-bottom: 1rem;
+            color: rgb(203, 2, 19);
+            font-family: 'Alumni Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .approach-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            padding: 6rem 0;
+            background: rgb(248, 248, 248);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(203, 2, 19, 0.1);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: rgb(203, 2, 19);
+        }
+
+        .solution-card h3 {
+            color: rgb(203, 2, 19);
+            margin-bottom: 1.5rem;
+            font-family: 'Alumni Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .solution-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .solution-example {
+            font-size: 0.95rem;
+            color: rgb(100, 100, 100);
+            font-style: italic;
+            border-top: 1px solid rgb(240, 240, 240);
+            padding-top: 1rem;
+        }
+
+        /* Team Section with Real Photos */
+        .team {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            justify-items: center;
+        }
+
+        .team-member {
+            text-align: center;
+            max-width: 450px;
+        }
+
+        .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 2rem;
+            border: 4px solid rgb(203, 2, 19);
+            box-shadow: 0 10px 30px rgba(203, 2, 19, 0.2);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* CRITICAL FIX: Crop Viktor's photo to show only adult */
+        .member-image.cropped {
+            object-position: center top;
+            transform: scale(1.2);
+        }
+
+        .member-info h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            color: rgb(0, 0, 0);
+            font-family: 'Alumni Sans', sans-serif;
+        }
+
+        .member-role {
+            display: block;
+            font-family: 'Alumni Sans', sans-serif;
+            /* EDITED: Size and weight changed to match project name */
+            font-size: 1.5rem; 
+            font-weight: 700;
+            color: rgb(203, 2, 19);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .member-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgb(60, 60, 60);
+        }
+
+        /* EDITED: Combined Client Sections */
+        .clients {
+            padding: 6rem 0;
+            background: rgb(248, 248, 248);
+        }
+
+        .clients-grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .client-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(203, 2, 19, 0.1);
+            position: relative;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .client-name {
+            color: rgb(203, 2, 19);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin: 0;
+            font-family: 'Alumni Sans', sans-serif;
+        }
+
+        .client-result {
+            background: rgb(203, 2, 19);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Alumni Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .project-name {
+            /* EDITED: Size changed to match team member name */
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: rgb(0, 0, 0);
+            font-family: 'Alumni Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgb(60, 60, 60);
+        }
+
+        /* CRITICAL FIX: CTA Section with proper text formatting */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgb(203, 2, 19) 0%, rgb(197, 42, 14) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            color: white;
+            margin-bottom: 1rem;
+            font-family: 'KS Bistra', 'Montserrat', sans-serif;
+        }
+
+        .cta-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            font-family: 'Alumni Sans', sans-serif;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-details {
+            margin-bottom: 3rem;
+        }
+        
+        .cta-result {
+            font-family: 'Alumni Sans', 'Montserrat', sans-serif;
+            font-weight: 700;
+            /* EDITED: Font size reduced to fit on one line on desktop */
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: white;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .cta-buttons .btn {
+            background: white;
+            color: rgb(203, 2, 19);
+            font-weight: 700;
+        }
+
+        .cta-buttons .btn:hover {
+            background: rgb(248, 248, 248);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-integrated {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-integrated p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero {
+                min-height: 100vh;
+                padding: 2rem 0;
+            }
+            
+            .logo-image {
+                max-width: 50px;
+            }
+            
+            .approach-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .clients-grid-2x2 {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 1.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .team-member {
+                max-width: 100%;
+            }
+            
+            .approach,
+            .solutions,
+            .team,
+            .clients,
+            .cta {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                margin-bottom: 3rem;
+            }
+            
+            .approach-card,
+            .solution-card,
+            .client-card {
+                padding: 1.5rem;
+            }
+            
+            .client-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .client-result {
+                align-self: flex-start;
+            }
+            
+            .hero-tagline {
+                margin-bottom: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .enterprise-text {
+                display: block;
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .btn-large {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .approach-card,
+            .solution-card,
+            .client-card {
+                padding: 1rem;
+            }
+            
+            .solution-card {
+                padding: 2rem 1rem;
+            }
+            
+            .logo-image {
+                max-width: 40px;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .btn:focus,
+        button:focus {
+            outline: 3px solid rgba(203, 2, 19, 0.5);
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="logo">
-                <img src="logo.jpg" alt="ДИВО Logo" class="logo-image">
-                <!-- Fallback diamond logo if image fails -->
+                <img src='data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 8.95"><defs><style>.cls-1{fill:%23cb0213;}</style></defs><g id="Слой_2" data-name="Слой 2"><g id="Слой_1-2" data-name="Слой 1"><path class="cls-1" d="M5.55,4.29A4,4,0,0,1,5,3.94a4,4,0,0,1-.41-.31A5,5,0,0,1,4,3a4.1,4.1,0,0,1-.47-.86A6.69,6.69,0,0,1,3.24,1a9.26,9.26,0,0,1-.1-1H2.86a5.9,5.9,0,0,1-.1,1,6.69,6.69,0,0,1-.32,1.16A4.6,4.6,0,0,1,2,3a5,5,0,0,1-.53.63A4,4,0,0,1,1,3.94a4,4,0,0,1-.59.35A2.53,2.53,0,0,1,0,4.48H0a2.49,2.49,0,0,1,.45.18A4,4,0,0,1,1,5a4,4,0,0,1,.41.31A5.85,5.85,0,0,1,2,6a4.6,4.6,0,0,1,.46.86A6.69,6.69,0,0,1,2.76,8a5.9,5.9,0,0,1,.1,1h.28a9.26,9.26,0,0,1,.1-1,6.69,6.69,0,0,1,.32-1.16A4.1,4.1,0,0,1,4,6a5.82,5.82,0,0,1,.52-.63A4,4,0,0,1,5,5a4,4,0,0,1,.59-.35A2.82,2.82,0,0,1,6,4.48H6A2.88,2.88,0,0,1,5.55,4.29Z"/></g></g></svg>' alt="ДИВО Logo" class="logo-image">
                 <div class="logo-fallback" style="display: none;">♦</div>
             </div>
             <h1 class="hero-title">ДИВО</h1>
             <p class="hero-subtitle">Разработка интеллектуальных систем</p>
-            <p class="hero-tagline">Создаем решения, которые объединяют <span class="accent">возможности AI + надежность автоматизации</span></p>
+            <p class="hero-tagline">Создаем решения, которые объединяют<br><span class="accent">возможности AI + надежность автоматизации</span></p>
             <div class="hero-cta">
                 <button class="btn btn-primary" onclick="scrollToSection('cta')">Получить консультацию</button>
             </div>
         </div>
     </section>
 
-    <!-- Approach Section -->
     <section class="approach" id="approach">
         <div class="container">
             <h2 class="section-title">Наш подход</h2>
@@ -51,23 +1435,22 @@
         </div>
     </section>
 
-    <!-- Solutions Section -->
     <section class="solutions" id="solutions">
         <div class="container">
             <h2 class="section-title">Решения</h2>
             <div class="solutions-grid">
                 <div class="solution-card">
-                    <h3>умные системы</h3>
+                    <h3>Умные системы</h3>
                     <p class="solution-description">Решения для анализа данных, автоматизированных рекомендательных систем, интеграции и системы управления процессами в компании.</p>
                     <p class="solution-example">Например: системы аналитики для закупок и продаж, платформы обработки внутренних данных.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>корпоративные ассистенты</h3>
+                    <h3>Корпоративные ассистенты</h3>
                     <p class="solution-description">Цифровые помощники для сотрудников и отделов, которые ускоряют рутинные процессы и помогают принимать решения на основе данных.</p>
                     <p class="solution-example">Например: ассистент коммерческого директора, AI арт директор, помощник отдела продаж.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>безопасные решения</h3>
+                    <h3>Безопасные решения</h3>
                     <p class="solution-description">Инструменты, работающие в изолированных корпоративных контурах, с поддержкой стандартов безопасности и деперсонализацией данных на выход во вне.</p>
                     <p class="solution-example">Например: on-premise аудит звонков, деперсонализация для выполнения закона 152-ФЗ.</p>
                 </div>
@@ -75,14 +1458,13 @@
         </div>
     </section>
 
-    <!-- Team Section -->
     <section class="team" id="team">
         <div class="container">
             <h2 class="section-title">Команда</h2>
             <div class="team-grid">
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="IMG_0636.jpg" alt="Дарья Камышина" class="member-image" loading="eager">
+                        <img src="Daria.JPG" alt="Дарья Камышина" class="member-image" loading="eager">
                         <div class="member-placeholder" style="display: none;">Д</div>
                     </div>
                     <div class="member-info">
@@ -93,7 +1475,7 @@
                 </div>
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="photo_2025-10-06-12.01.26.jpg" alt="Виктор Писаревский" class="member-image cropped" loading="eager">
+                        <img src="Victor.jpeg" alt="Виктор Писаревский" class="member-image cropped" loading="eager">
                         <div class="member-placeholder" style="display: none;">В</div>
                     </div>
                     <div class="member-info">
@@ -106,117 +1488,717 @@
         </div>
     </section>
 
-    <!-- Enterprise Clients Section -->
-    <section class="enterprise-clients" id="enterprise-clients">
-        <div class="container">
-            <h2 class="section-title">Клиенты <span class="enterprise-text">Enterprise</span></h2>
-            <div class="clients-grid-2x2">
-                <!-- First Row -->
-                <div class="client-card">
-                    <div class="client-header">
-                        <h3 class="client-name">РАЙФФАЙЗЕНБАНК</h3>
-                    </div>
-                    <h4 class="project-name">Ассистент арт-директора</h4>
-                    <p class="project-description">Инструмент автоматически проверяет дизайн-макеты на соответствие стандартам качества и дизайн-системе, освобождая живых арт-директоров для творческих и стратегических задач</p>
-                </div>
-
-                <div class="client-card">
-                    <div class="client-header">
-                        <h3 class="client-name">X5 ГРУПП</h3>
-                    </div>
-                    <h4 class="project-name">Гибридная платформа для AI интеграций</h4>
-                    <p class="project-description">Единый пульт управления для креативного и аналитического AI позволяет централизованно и безопасно работать с любыми моделями, будь то языковые LLM или графические генераторы, с учетом сложностей параллельного импорта и корпоративной безопасности.</p>
-                </div>
-
-                <!-- Second Row -->
-                <div class="client-card">
-                    <div class="client-header">
-                        <h3 class="client-name">СБЕР</h3>
-                    </div>
-                    <h4 class="project-name">Витрина данных</h4>
-                    <p class="project-description">Поток для данных, который безопасно и быстро доставляет информацию из критически важных систем в любые аналитические инструменты, позволяя бизнесу получать инсайты, не рискуя стабильностью основной инфраструктуры.</p>
-                </div>
-
-                <div class="client-card featured">
-                    <div class="client-header">
-                        <h3 class="client-name">АВИТО</h3>
-                        <span class="client-result">в 3 раза быстрее</span>
-                    </div>
-                    <h4 class="project-name">AI исследование для редизайна</h4>
-                    <p class="project-description">Выступили внешней фокус группой и провели с помощью AI UX-исследования и собрав требования от всех команд и рынка в рабочий прототип в 3 раза быстрее стандартного процесса, позволив создавать продукты, которые нравятся пользователям и не вызывают внутренних конфликтов.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Regular Clients Section (former Additional Projects) -->
     <section class="clients" id="clients">
         <div class="container">
             <h2 class="section-title">Клиенты</h2>
             <div class="clients-grid-2x2">
                 <div class="client-card">
+                    <h4 class="project-name">Ассистент арт-директора</h4>
+                    <div class="client-header">
+                        <h3 class="client-name">РАЙФФАЙЗЕНБАНК</h3>
+                    </div>
+                    <p class="project-description">Инструмент автоматически проверяет дизайн-макеты на соответствие стандартам качества и дизайн-системе, освобождая живых арт-директоров для творческих и стратегических задач</p>
+                </div>
+
+                <div class="client-card">
+                    <h4 class="project-name">Гибридная платформа для AI интеграций</h4>
+                    <div class="client-header">
+                        <h3 class="client-name">X5 ГРУПП</h3>
+                    </div>
+                    <p class="project-description">Единый пульт управления для креативного и аналитического AI позволяет централизованно и безопасно работать с любыми моделями, будь то языковые LLM или графические генераторы, с учетом сложностей параллельного импорта и корпоративной безопасности.</p>
+                </div>
+
+                <div class="client-card">
+                    <h4 class="project-name">Витрина данных</h4>
+                    <div class="client-header">
+                        <h3 class="client-name">СБЕР</h3>
+                    </div>
+                    <p class="project-description">Поток для данных, который безопасно и быстро доставляет информацию из критически важных систем в любые аналитические инструменты, позволяя бизнесу получать инсайты, не рискуя стабильностью основной инфраструктуры.</p>
+                </div>
+
+                <div class="client-card">
+                    <h4 class="project-name">AI исследование для редизайна</h4>
+                    <div class="client-header">
+                        <h3 class="client-name">АВИТО</h3>
+                        <span class="client-result">в 3 раза быстрее</span>
+                    </div>
+                    <p class="project-description">Выступили внешней фокус группой и провели с помощью AI UX-исследования и собрав требования от всех команд и рынка в рабочий прототип в 3 раза быстрее стандартного процесса, позволив создавать продукты, которые нравятся пользователям и не вызывают внутренних конфликтов.</p>
+                </div>
+
+                <div class="client-card">
+                    <h4 class="project-name">AI подготовка документов</h4>
                     <div class="client-header">
                         <h3 class="client-name">ПРОЕКТНЫЕ УСЛУГИ</h3>
                         <span class="client-result">80% экономия времени</span>
                     </div>
-                    <h4 class="project-name">AI подготовка документов</h4>
                     <p class="project-description">Умный конвейер документов за минуты собирает персонализированные договоры и отчеты из шаблонов и данных CRM, сокращая время на бумажную работу на 80% и позволяя быстро запускать новые проекты.</p>
                 </div>
 
                 <div class="client-card">
+                    <h4 class="project-name">On-prem аудит звонков</h4>
                     <div class="client-header">
                         <h3 class="client-name">ТЕЛЕКОМ, БРОКЕРЫ</h3>
                     </div>
-                    <h4 class="project-name">On-prem аудит звонков</h4>
                     <p class="project-description">Аудитор отдела продаж, который проводит анализ всех звонков, обеспечивая полный контроль над данными внутри вашего корпоративного контура и соответствие стандартам безопасности.</p>
                 </div>
 
                 <div class="client-card">
+                    <h4 class="project-name">Telegram-бот поиска в базе знаний</h4>
                     <div class="client-header">
                         <h3 class="client-name">РИТЕЙЛ</h3>
                     </div>
-                    <h4 class="project-name">Telegram-бот поиска в базе знаний</h4>
                     <p class="project-description">Бот интегрирован с базой данных компании и позволяет сотрудникам получать быстрые и точные ответы на любые вопросы, связанные с товарным ассортиментом, процессами обслуживания и внутренней документацией.</p>
                 </div>
 
                 <div class="client-card">
+                    <h4 class="project-name">Агент лидогенерации в LinkedIn</h4>
                     <div class="client-header">
                         <h3 class="client-name">Б2Б УСЛУГИ</h3>
                     </div>
-                    <h4 class="project-name">Агент лидогенерации в LinkedIn</h4>
                     <p class="project-description">Цифровой двойник вашего сейлз-менеджера, который неотличимо от человека находит и квалифицирует B2B-клиентов в LinkedIn, освобождая вашу команду для общения только с заинтересованными лидами.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="cta">
+     <section class="cta" id="cta">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">начало работы</h2>
-                <h3 class="cta-subtitle">что предлагаем</h3>
-                <p class="cta-description">Техническую консультацию по вашим процессам. Обсудим, где AI даст измеримый эффект, а где достаточно классической автоматизации.</p>
+                <h2 class="cta-title">Начало работы</h2>
+                <p class="cta-description">Предлагаем техническую консультацию по вашим процессам. Обсудим, где AI даст измеримый эффект, а где достаточно классической автоматизации.</p>
                 <div class="cta-details">
-                    <p class="cta-duration">За 40 минут вы получите:</p>
-                    <p class="cta-result"><strong>Техническое заключение с рекомендациями и примерной оценкой проекта.</strong></p>
+                    <p class="cta-description">За 40 минут вы получите:</p>
+                    <h3 class="cta-result">Техническое заключение с рекомендациями и примерной оценкой проекта</h3>
                 </div>
                 <div class="cta-buttons">
-                    <a href="https://t.me/darikamouse" target="_blank" class="btn btn-primary btn-large">Связаться с нами</a>
-                    <a href="https://calendar.app.google/zXJQAHoAFtcwB7147" target="_blank" class="btn btn-secondary btn-large">Запланировать встречу</a>
+                    <a href="https://t.me/darikamouse" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">Связаться с нами</a>
+                    <a href="https://calendar.app.google/zXJQAHoAFtcwB7147" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large">Запланировать встречу</a>
+                </div>
+                
+                <div class="footer-integrated">
+                    <p>&copy; 2025 ДИВО. Разработка интеллектуальных систем</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 ДИВО. Разработка интеллектуальных систем</p>
-            </div>
-        </div>
-    </footer>
+    <script>
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
 
-    <script src="app.js"></script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations on DOM load
+        document.addEventListener('DOMContentLoaded', function() {
+            // CRITICAL FIX: Initialize logo and image loading first
+            initializeLogoLoading();
+            initializePhotoLoading();
+
+            // Animate cards on scroll
+            const animatedElements = document.querySelectorAll(
+                '.approach-card, .solution-card, .team-member, .client-card'
+            );
+            
+            animatedElements.forEach((el, index) => {
+                // Set initial state
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.transitionDelay = `${index * 0.1}s`;
+                
+                // Observe for intersection
+                observer.observe(el);
+            });
+
+            // Add hover effects to buttons (but don't interfere with CTA buttons)
+            const buttons = document.querySelectorAll('.btn:not(.cta-buttons .btn)');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Handle hero CTA button - scroll to CTA section
+            const heroButton = document.querySelector('.hero .btn');
+            if (heroButton) {
+                heroButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    scrollToSection('cta');
+                });
+            }
+
+            // Add parallax effect to hero section
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.3;
+                
+                if (hero && scrolled < hero.offsetHeight) {
+                    hero.style.transform = `translateY(${rate}px)`;
+                }
+            });
+
+            // Add active states to cards
+            const cards = document.querySelectorAll('.approach-card, .solution-card, .client-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(event) {
+                    // Remove active class from all cards of the same type
+                    const sameTypeCards = this.parentElement.querySelectorAll('.' + this.className.split(' ')[0]);
+                    sameTypeCards.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked card
+                    this.classList.add('active');
+                    
+                    // Add ripple effect
+                    createRipple(this, event);
+                });
+            });
+
+            // Animate counters in results
+            animateCounters();
+
+            // Initialize mobile menu if needed
+            initializeMobileInteractions();
+
+            // CRITICAL FIX: Ensure CTA buttons work properly
+            initializeCTAButtons();
+        });
+
+        // CRITICAL FIX: Initialize logo loading with proper fallback
+        function initializeLogoLoading() {
+            const logoImage = document.querySelector('.logo-image');
+            const logoFallback = document.querySelector('.logo-fallback');
+            
+            if (logoImage && logoFallback) {
+                // Style the fallback
+                logoFallback.style.cssText = `
+                    font-size: 4rem;
+                    color: rgb(203, 2, 19);
+                    transform: scaleY(1.8) scaleX(0.8);
+                    display: none;
+                    font-weight: bold;
+                    text-shadow: 0 2px 4px rgba(203, 2, 19, 0.3);
+                    animation: logoFallbackPulse 3s ease-in-out infinite;
+                `;
+                
+                // Handle image load error
+                logoImage.addEventListener('error', function() {
+                    console.log('Logo image failed to load, showing fallback');
+                    this.style.display = 'none';
+                    logoFallback.style.display = 'inline-block';
+                });
+                
+                // Handle successful image load
+                logoImage.addEventListener('load', function() {
+                    console.log('Logo image loaded successfully');
+                    this.style.display = 'block';
+                    logoFallback.style.display = 'none';
+                });
+                
+                // Check if image is already loaded (cached)
+                if (logoImage.complete) {
+                    if (logoImage.naturalWidth === 0) {
+                        // Image failed to load
+                        logoImage.style.display = 'none';
+                        logoFallback.style.display = 'inline-block';
+                    } else {
+                        // Image loaded successfully
+                        logoImage.style.display = 'block';
+                        logoFallback.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        // CRITICAL FIX: Initialize team photo loading with proper fallbacks
+        function initializePhotoLoading() {
+            const memberImages = document.querySelectorAll('.member-image');
+            
+            memberImages.forEach(img => {
+                const placeholder = img.parentNode.querySelector('.member-placeholder');
+                
+                if (placeholder) {
+                    // Style the placeholder
+                    placeholder.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, rgb(203, 2, 19), rgb(197, 42, 14));
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 3rem;
+                        font-weight: bold;
+                        font-family: 'Alumni Sans', sans-serif;
+                    `;
+                }
+                
+                // Handle image load error
+                img.addEventListener('error', function() {
+                    console.log(`Team image failed to load: ${this.src}`);
+                    this.style.display = 'none';
+                    if (placeholder) {
+                        placeholder.style.display = 'flex';
+                    }
+                });
+                
+                // Handle successful image load
+                img.addEventListener('load', function() {
+                    console.log(`Team image loaded successfully: ${this.src}`);
+                    this.style.display = 'block';
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                });
+                
+                // Check if image is already loaded (cached)
+                if (img.complete) {
+                    if (img.naturalWidth === 0) {
+                        // Image failed to load
+                        img.style.display = 'none';
+                        if (placeholder) {
+                            placeholder.style.display = 'flex';
+                        }
+                    } else {
+                        // Image loaded successfully
+                        img.style.display = 'block';
+                        if (placeholder) {
+                            placeholder.style.display = 'none';
+                        }
+                    }
+                }
+            });
+        }
+
+        // CRITICAL FIX: Initialize CTA buttons functionality
+        function initializeCTAButtons() {
+            const ctaButtons = document.querySelectorAll('.cta-buttons .btn');
+            
+            ctaButtons.forEach(button => {
+                // Ensure buttons have proper attributes
+                if (button.tagName === 'A' && button.href) {
+                    // Make sure target="_blank" is set
+                    button.setAttribute('target', '_blank');
+                    button.setAttribute('rel', 'noopener noreferrer');
+                    
+                    // Add click tracking without preventing default behavior
+                    button.addEventListener('click', function(e) {
+                        const buttonText = this.textContent.trim();
+                        const buttonUrl = this.href;
+                        
+                        console.log(`CTA Button clicked: ${buttonText} -> ${buttonUrl}`);
+                        
+                        // Track button clicks for analytics
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'cta_click', {
+                                event_category: 'conversion',
+                                event_label: buttonText,
+                                value: buttonUrl
+                            });
+                        }
+                        
+                        // Don't prevent default - let the browser handle the navigation
+                    });
+                    
+                    // Add hover effects specifically for CTA buttons
+                    button.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-3px)';
+                        this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.2)';
+                    });
+                    
+                    button.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = '';
+                    });
+                }
+            });
+        }
+
+        // Create ripple effect
+        function createRipple(element, event) {
+            const circle = document.createElement('span');
+            const diameter = Math.max(element.clientWidth, element.clientHeight);
+            const radius = diameter / 2;
+
+            const rect = element.getBoundingClientRect();
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - rect.left - radius}px`;
+            circle.style.top = `${event.clientY - rect.top - radius}px`;
+            circle.classList.add('ripple');
+
+            // Add ripple styles
+            circle.style.position = 'absolute';
+            circle.style.borderRadius = '50%';
+            circle.style.background = 'rgba(203, 2, 19, 0.1)';
+            circle.style.transform = 'scale(0)';
+            circle.style.animation = 'ripple 0.6s linear';
+            circle.style.pointerEvents = 'none';
+
+            const existingRipple = element.querySelector('.ripple');
+            if (existingRipple) {
+                existingRipple.remove();
+            }
+
+            element.style.position = 'relative';
+            element.style.overflow = 'hidden';
+            element.appendChild(circle);
+
+            // Remove ripple after animation
+            setTimeout(() => {
+                circle.remove();
+            }, 600);
+        }
+
+        // Animate counters
+        function animateCounters() {
+            const results = document.querySelectorAll('.client-result');
+            
+            results.forEach(result => {
+                const text = result.textContent;
+                const hasNumber = /\d+/.test(text);
+                
+                if (hasNumber && !result.dataset.animated) {
+                    observer.observe(result);
+                    
+                    // Create intersection observer specifically for counter animation
+                    const counterObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                                entry.target.dataset.animated = 'true';
+                                
+                                // Extract number and animate it
+                                const number = text.match(/\d+/)[0];
+                                const prefix = text.split(number)[0];
+                                const suffix = text.split(number)[1];
+                                
+                                animateNumber(entry.target, 0, parseInt(number), prefix, suffix);
+                                counterObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+                    
+                    counterObserver.observe(result);
+                }
+            });
+        }
+
+        // Animate number counting
+        function animateNumber(element, start, end, prefix = '', suffix = '') {
+            const duration = 2000;
+            const startTime = Date.now();
+            
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(start + (end - start) * easeOutCubic(progress));
+                
+                element.textContent = prefix + current + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            update();
+        }
+
+        // Easing function
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        // Initialize mobile-specific interactions
+        function initializeMobileInteractions() {
+            // Add touch feedback for mobile
+            if ('ontouchstart' in window) {
+                const touchElements = document.querySelectorAll('.btn:not(.cta-buttons .btn), .approach-card, .solution-card, .client-card');
+                
+                touchElements.forEach(element => {
+                    element.addEventListener('touchstart', function() {
+                        this.classList.add('touching');
+                    });
+                    
+                    element.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.classList.remove('touching');
+                        }, 150);
+                    });
+                });
+            }
+
+            // Optimize scroll performance on mobile
+            let ticking = false;
+            
+            function updateScrollEffects() {
+                // Throttle scroll events for better performance
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        // Update any scroll-based animations here
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', updateScrollEffects, { passive: true });
+        }
+
+        // Add CSS animations via JavaScript
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .touching {
+                transform: scale(0.95);
+                transition: transform 0.1s ease;
+            }
+            
+            .active {
+                transform: translateY(-5px) !important;
+                box-shadow: 0 15px 35px rgba(203, 2, 19, 0.2) !important;
+                border-color: rgb(203, 2, 19) !important;
+            }
+            
+            .member-placeholder {
+                border-radius: 0;
+            }
+            
+            .logo-fallback {
+                animation: logoFallbackPulse 3s ease-in-out infinite;
+            }
+            
+            @keyframes logoFallbackPulse {
+                0%, 100% {
+                    transform: scaleY(1.8) scaleX(0.8);
+                }
+                50% {
+                    transform: scaleY(1.9) scaleX(0.85);
+                }
+            }
+            
+            /* Enhanced hover effects */
+            .approach-card:hover,
+            .solution-card:hover,
+            .client-card:hover {
+                border-color: rgba(203, 2, 19, 0.3);
+            }
+            
+            /* Team photo hover effects */
+            .member-photo:hover {
+                transform: scale(1.05);
+                transition: transform 0.3s ease;
+            }
+            
+            /* Client grid hover effect */
+            .clients-grid-2x2:hover .client-card:not(:hover) {
+                opacity: 0.7;
+                transform: scale(0.98);
+            }
+            
+            .clients-grid-2x2 .client-card {
+                transition: all 0.3s ease;
+            }
+            
+            /* CTA buttons enhanced styling */
+            .cta-buttons .btn-secondary {
+                background: transparent;
+                border: 2px solid white;
+                color: white;
+            }
+            
+            .cta-buttons .btn-secondary:hover {
+                background: white;
+                color: rgb(203, 2, 19);
+            }
+            
+            /* Ensure CTA buttons are clickable */
+            .cta-buttons .btn {
+                pointer-events: auto;
+                cursor: pointer;
+                position: relative;
+                z-index: 10;
+            }
+            
+            /* Logo hover effect */
+            .logo-image:hover {
+                transform: scale(1.1);
+                transition: transform 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance optimization: Debounce resize events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Handle window resize
+        const handleResize = debounce(() => {
+            // Recalculate any size-dependent animations
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = 'translateY(0)';
+            }
+        }, 250);
+
+        window.addEventListener('resize', handleResize);
+
+        // Preload critical resources and optimize performance
+        function preloadResources() {
+            // Preload team photos
+            const criticalImages = [
+              'https://drive.google.com/uc?export=view&id=15fkyqVQcMwkIvZXWL5tJXdAXINq-5Cgj', 
+              'https://drive.google.com/uc?export=view&id=1DxBZof3Mf5tglsX0Tb-Jn3psnRgdD28J'
+            ];
+            
+            criticalImages.forEach(src => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+        }
+
+        // Initialize everything when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', preloadResources);
+        } else {
+            preloadResources();
+        }
+
+        // Export functions for potential external use
+        window.DIVO = {
+            scrollToSection
+        };
+
+        // Add enhanced scroll tracking for analytics
+        function initializeScrollTracking() {
+            const sections = document.querySelectorAll('section[id]');
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Track section view for analytics
+                        const sectionName = entry.target.id || entry.target.className;
+                        console.log(`Section viewed: ${sectionName}`);
+                        
+                        // You can add Google Analytics or other tracking here
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'section_view', {
+                                event_category: 'engagement',
+                                event_label: sectionName
+                            });
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        }
+
+        // Initialize scroll tracking after page load
+        window.addEventListener('load', function() {
+            initializeScrollTracking();
+            
+            // Add final performance optimizations
+            setTimeout(() => {
+                // Enable smooth scrolling after initial load
+                document.documentElement.style.scrollBehavior = 'smooth';
+                
+                // Lazy load non-critical animations
+                const nonCriticalElements = document.querySelectorAll('.footer, .clients');
+                nonCriticalElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }, 1000);
+        });
+
+        // Handle navigation and improve UX - BUT DON'T INTERFERE WITH CTA BUTTONS
+        document.addEventListener('click', function(e) {
+            // Handle internal navigation (but skip CTA buttons)
+            if (e.target.matches('a[href^="#"]') && !e.target.closest('.cta-buttons')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            }
+            
+            // Add click tracking for buttons (but don't prevent CTA button defaults)
+            if ((e.target.matches('.btn') || e.target.closest('.btn')) && !e.target.closest('.cta-buttons')) {
+                const button = e.target.matches('.btn') ? e.target : e.target.closest('.btn');
+                const buttonText = button.textContent.trim();
+                
+                console.log(`Button clicked: ${buttonText}`);
+                
+                // Track button clicks
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        event_category: 'engagement',
+                        event_label: buttonText
+                    });
+                }
+            }
+        });
+
+        // Special handling for font loading optimization
+        function optimizeFontLoading() {
+            // Ensure fallbacks are properly handled
+            if ('fonts' in document) {
+                Promise.all([
+                    document.fonts.load('700 1em "KS Bistra"'),
+                    document.fonts.load('700 1em "Alumni Sans"'),
+                    document.fonts.load('300 1em "Roboto"')
+                ]).then(() => {
+                    console.log('All fonts loaded successfully');
+                    document.body.classList.add('fonts-loaded');
+                }).catch(() => {
+                    console.warn('Some fonts failed to load, using fallbacks');
+                    document.body.classList.add('fonts-fallback');
+                });
+            }
+        }
+
+        // Initialize font optimization
+        document.addEventListener('DOMContentLoaded', optimizeFontLoading);
+    </script>
 </body>
 </html>
