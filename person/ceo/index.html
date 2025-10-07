@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Камышина Дарья — CEO студии ДИВО</title>
+
+  <!-- Те же семейства шрифтов, что и на основном сайте -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Alumni+Sans:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&family=KS+Bistra:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* База и токены под стиль текущего сайта */
+    :root{
+      --accent: rgb(203, 2, 19);
+      --accent-10: rgba(203, 2, 19, 0.10);
+      --text: rgb(0,0,0);
+      --muted: rgb(60,60,60);
+      --bg-page: rgb(241,241,241);
+      --bg-card: #ffffff;
+      --radius: 16px;
+      --shadow-sm: 0 4px 20px rgba(0,0,0,0.05);
+      --shadow-md: 0 25px 50px rgba(0,0,0,0.15);
+      --container: 1200px;
+    }
+
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Roboto, sans-serif;
+      font-weight:300;
+      line-height:1.6;
+      color:var(--text);
+      background:var(--bg-page);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    /* Заголовки как на главной: KS Bistra + Alumni Sans */
+    h1, h2.section-title{
+      font-family: "KS Bistra", Montserrat, sans-serif;
+      font-weight:900;
+      line-height:1.2;
+      margin:0 0 1rem 0;
+      letter-spacing:-2px;
+      color:var(--text);
+    }
+    h3, h4, h5, h6{
+      font-family:"Alumni Sans", Montserrat, sans-serif;
+      font-weight:700;
+      line-height:1.2;
+      margin:0 0 1rem 0;
+    }
+
+    .container{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 2rem;
+    }
+
+    /* Кнопки — фирменные */
+    .btn{
+      display:inline-block;
+      padding:1rem 2rem;
+      border:none;
+      border-radius:8px;
+      text-decoration:none;
+      font-family: Montserrat, sans-serif;
+      font-weight:600;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:all .3s ease;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      margin:.5rem;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+    }
+    .btn-primary:hover{
+      background:rgb(197,42,14);
+      transform:translateY(-2px);
+      box-shadow:0 8px 25px var(--accent-10);
+    }
+    .btn-secondary{
+      background:transparent;
+      border:2px solid var(--accent);
+      color:var(--accent);
+    }
+    .btn-secondary:hover{
+      background:var(--accent);
+      color:#fff;
+      transform:translateY(-2px);
+      box-shadow:0 8px 25px var(--accent-10);
+    }
+
+    /* Декор заголовков секций */
+    .section-title{
+      text-align:center;
+      margin-bottom:3rem;
+      position:relative;
+    }
+    .section-title::after{
+      content:"";
+      display:block;
+      width:60px;
+      height:4px;
+      background:var(--accent);
+      margin:1rem auto 0;
+    }
+
+    /* Хиро со split‑компоновкой: текст + фото на пол‑экрана */
+    .ceo-hero{
+      min-height:80vh;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:stretch;
+      background:#fff;
+    }
+    .ceo-info{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:4rem 3rem;
+    }
+    .ceo-name{
+      font-family:"KS Bistra", Montserrat, sans-serif;
+      font-weight:900;
+      font-size:clamp(3rem, 6vw, 6rem);
+      margin:0 0 .75rem 0;
+      letter-spacing:-1px;
+    }
+    .ceo-role{
+      font-family:"Alumni Sans", Montserrat, sans-serif;
+      font-weight:700;
+      text-transform:uppercase;
+      color:var(--accent);
+      font-size:clamp(1.25rem, 2.5vw, 1.75rem);
+      margin-bottom:1rem;
+      letter-spacing:1px;
+    }
+    .ceo-tagline{
+      font-size:clamp(1.1rem, 2vw, 1.4rem);
+      color:var(--muted);
+      margin-bottom:2rem;
+      max-width:50ch;
+    }
+    .ceo-actions{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .ceo-photo{
+      position:relative;
+      min-height:60vh; /* пол‑экрана и выше */
+      overflow:hidden;
+    }
+    .ceo-photo img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      filter:grayscale(100%) contrast(1.05);
+    }
+
+    /* Секция контактов */
+    .section{ padding:4rem 0; background:#fff; }
+    .contacts-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+    .card{
+      background:var(--bg-card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-sm);
+      border:1px solid rgba(203,2,19,.1);
+    }
+    .contact-card{ padding:1.5rem 1.75rem; }
+    .contact-card h3{
+      font-family:"Alumni Sans", sans-serif;
+      font-weight:700;
+      margin-bottom:.5rem;
+      color:var(--text);
+    }
+    .contact-card p{ margin:.25rem 0 0 0; }
+    .contact-card a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:700;
+      word-break:break-word;
+    }
+
+    /* Подвал */
+    .footer-simple{
+      padding:2rem 0;
+      text-align:center;
+      color:#666;
+      font-size:.95rem;
+      background:#fff;
+      border-top:1px solid #eee;
+    }
+
+    /* Адаптив */
+    @media (max-width: 1024px){
+      .ceo-hero{ grid-template-columns:1fr; }
+      .ceo-photo{ order:-1; min-height:50vh; }
+      .ceo-info{ padding:2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="ceo-hero">
+    <div class="ceo-info">
+      <h1 class="ceo-name">Камышина Дарья</h1>
+      <div class="ceo-role">CEO студии ДИВО</div>
+      <p class="ceo-tagline">Разработка интеллектуальных систем</p>
+
+      <div class="ceo-actions">
+        <a class="btn btn-primary" href="https://www.divo.solutions" target="_blank" rel="noopener noreferrer">Сайт студии</a>
+      </div>
+    </div>
+
+    <!-- Фото на пол‑экрана: можно заменить файл на IMG_0599.jpg -->
+    <div class="ceo-photo" aria-hidden="true">
+      <img src="Daria.JPG" alt="Камышина Дарья — портрет"/>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section class="section" id="contacts">
+    <div class="container">
+      <h2 class="section-title">Контакты</h2>
+
+      <div class="contacts-grid">
+        <div class="card contact-card">
+          <h3>Telegram</h3>
+          <p><a href="https://t.me/darikamouse" target="_blank" rel="noopener noreferrer">@darikamouse</a></p>
+        </div>
+
+        <div class="card contact-card">
+          <h3>WhatsApp</h3>
+          <p><a href="https://wa.me/79035176391" target="_blank" rel="noopener noreferrer">wa.me/79035176391</a></p>
+        </div>
+
+        <div class="card contact-card">
+          <h3>Email</h3>
+          <p><a href="mailto:dkamysina@gmail.com">dkamysina@gmail.com</a></p>
+        </div>
+
+        <div class="card contact-card">
+          <h3>LinkedIn</h3>
+          <p><a href="https://www.linkedin.com/in/daria-kamyshina" target="_blank" rel="noopener noreferrer">daria-kamyshina</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-simple">
+    <div class="container">
+      <p>© 2025 ДИВО · Камышина Дарья</p>
+    </div>
+  </footer>
+
+</body>
+</html>
